@@ -1,0 +1,24 @@
+{
+  "name": "clacks-ui",
+  "title": "clacks ui - boutique marketing site",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/chevett/clacks-ui.git"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha --reporter spec $(find . -path ./node_modules -prune -o -name '*.spec.js' -print)"
+  },
+  "dependencies": {
+    "express": "3.2.4",
+    "hjs": "*",
+    "less-middleware": "*",
+    "connect-handlebars": "0.0.5"
+  },
+  "devDependencies":{
+  	"mocha": "*",
+  	"nodemon": "*"
+  }
+}

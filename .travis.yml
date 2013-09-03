@@ -1,0 +1,34 @@
+---
+language: node_js
+node_js:
+- '0.10'
+branches:
+only:
+- master
+
+env:
+  global:
+    secure: ! 'jQ/x9mGZO4/sgCccor9yKEpIvnL4CKOSeliDvLPsfpMyJNhUTvBTenQqPBbo
+
+      Sjq9G74LpVFR8zOSKY2wOT9qkWexmCDG1Ih6kZlkZRWVV4hkQYw8FQwZY8TH
+
+      XB2IpV6qoa+njxMwpZ3zXOszFGZeobUUT+KAcB/fLkjp9aKBsn0='
+
+
+after_success:
+          - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+          - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+            git remote add heroku git@heroku.com:clacks-ui.git;
+            echo "Host heroku.com" >> ~/.ssh/config;
+            echo "   StrictHostKeyChecking no" >> ~/.ssh/config;
+            echo "   CheckHostIP no" >> ~/.ssh/config;
+            echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config;
+            heroku config:add NODE_ENV=production;
+            heroku config:add MT3_port=80;
+            heroku config:add MT3_sslPort=443;
+            heroku config:add MT3_hostname=www.miketown3.com;
+            heroku config:add MT3_lastCommit=`git rev-parse HEAD`;
+            heroku keys:clear;
+            yes | heroku keys:add;
+            yes | git push heroku master --force;
+            fi

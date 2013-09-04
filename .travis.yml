@@ -1,20 +1,12 @@
----
 language: node_js
 node_js:
 - '0.10'
-branches:
+branches: 
 only:
 - master
-
 env:
   global:
-    secure: ! 'jQ/x9mGZO4/sgCccor9yKEpIvnL4CKOSeliDvLPsfpMyJNhUTvBTenQqPBbo
-
-      Sjq9G74LpVFR8zOSKY2wOT9qkWexmCDG1Ih6kZlkZRWVV4hkQYw8FQwZY8TH
-
-      XB2IpV6qoa+njxMwpZ3zXOszFGZeobUUT+KAcB/fLkjp9aKBsn0='
-
-
+    secure: QnJe46KYoLLtiAcoCXRgITTkZEWw3NiQ37gTkQuG3QaLnKD2DqfZFnDuSz8iGUMswUzntr+Qlj7KeV1K5LwnXjEOnFNxoTBsxG2zqT8FDKemdCEp/QA2uDkDfz+bw+ByHP7N5cG39DKM6a45IbDqC1bEqJ2EkOkGgs6BdrLnsTo=
 after_success:
           - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
           - if [[ "$TRAVIS_BRANCH" == "master" ]]; then
